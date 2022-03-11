@@ -40,4 +40,5 @@ int main(){
 		}
 	}
 	f1.close();			f2.close();			f3.close();			f4.close();
+	abclo;
 }
