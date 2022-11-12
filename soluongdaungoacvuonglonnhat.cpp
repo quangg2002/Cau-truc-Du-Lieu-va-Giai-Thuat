@@ -1,23 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main() {
-    int dem = 0, cnt = 0;
-    stack < int > s;
-    string X;
-    cin >> X;
-    int sqr[1005];
-    for (int i = 0; i < X.size(); i++) {
-        if (X[i] = '[' || X[i] == ']') cnt++;
-        sqr[i] = cnt;
+
+int Solution(string s) {
+    int br[1001] = {0}, cnt = 0;
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == ']') cnt++;
+        br[i] = cnt;
     }
-    for (int i = 0; i < X.size(); i++) {
-        if (X[i] == '(' || X[i] == '[') {
-            s.push(i);
-        } else {
-            if (!s.empty() && X[i] == ')' && X[s.top()] == '(') s.pop();
-            if (!s.empty() && X[i] == ']' && X[s.top()] == '[') s.pop();
-            if (s.size() >= 0) dem = max(dem, sqr[i] - sqr[s.top()]);
+    int ans = 0;
+    stack<int> st;
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == '(' || s[i] == '[') st.push(i);
+        else {
+            if (!st.empty() && ((s[st.top()] == '(' && s[i] == ')') || (s[st.top()] == '[' && s[i] == ']'))) {
+                st.pop();
+                if (st.size()){
+                    ans = max(ans, br[i] - br[st.top()]);
+                }
+                else st.push(i);
+            } 
+            else st.push(i);
         }
     }
-    cout << dem << endl;
+    return ans;
+}
+int main() {
+    string s;
+    cin >> s;
+    cout << Solution(s) << endl;
 }

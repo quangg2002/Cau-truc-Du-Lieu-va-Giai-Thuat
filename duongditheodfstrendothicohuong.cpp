@@ -4,15 +4,6 @@ using namespace std;
 int dd[1005];
 int di[1005];
 vector < int > v[1005];
-// void dfs(int dinh){
-//     dd[dinh] = 1;
-//     for(int i = 0; i < v[dinh].size(); i++){
-//         if(!dd[v[dinh][i]]){
-//             dfs(v[dinh][i]);
-//             di[v[dinh][i]] = dinh;
-//         }
-//     }
-// }
 void bfs(int dinh){
     dd[dinh] = 1;
     queue < int > q;
@@ -60,6 +51,7 @@ int main(){
             int x, y;
             cin >> x >> y;
             v[x].push_back(y);
+            v[y].push_back(x);
         }
         xuly(d1, d2);
     }

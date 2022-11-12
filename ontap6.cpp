@@ -5,8 +5,7 @@ int n, k, a[100], b[100];
 vector < string > v;
 
 int kt(){
-	for(int j = 1; j <= k - 1; j++) if(a[b[j]] >= a[b[j + 1]]) return 0;
-	return 1;
+	for(int j = 1; j <= k - 1; j++) return a[b[j]] > a[b[j + 1]];
 }
 
 void ql(int i){
@@ -16,9 +15,9 @@ void ql(int i){
 			if(kt()){
 				string s = "";
 				for(int j = 1; j <= k; j++){
-					s += to_string(a[b[j]]);
+					s += to_string(a[b[i]]);
 					s += " ";
-				}
+				} 
 				v.push_back(s);
 			}
 		}
@@ -27,7 +26,6 @@ void ql(int i){
 }
 
 int main(){
-	cin >> n;
 	for(int i = 1; i <= n; i++) cin >> a[i];
 	for( k = 2; k <= n; k++) ql(1);
 	sort(v.begin(), v.end());

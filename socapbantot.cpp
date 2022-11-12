@@ -18,7 +18,7 @@ int main(){
     for(int i = 1; i < n - k; i++){
         b[v[i - 1]]--;
         b[v[i + k]]++;
-        d += (b[v[i]] - 1);
+        d += b[v[i]] - 1;
     }
     for(int i = n - k; i < n; i++)    c[v[i]]++;
     d += c[v[n - k]] - 1;

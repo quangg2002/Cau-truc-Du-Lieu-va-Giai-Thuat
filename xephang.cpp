@@ -11,6 +11,9 @@ int main(){
 	sort(a,a+n);
 	int sum=-1;
 	for(int i=1;i<n;i++){
+		cout << a[i].first << " " << a[i].second << endl;
+	}
+	for(int i=1;i<n;i++){
 		sum=max (sum, a[i].first);
 		sum+=a[i].second;
 	}

@@ -11,8 +11,8 @@ void ql(int i){
 			dd[j] = 1;
 			a[i] = j;
 			if(i == n){
-				long long maax = INT_MIN, miin = INT_MAX;
-				for(string x : v){
+				long long maax = 0, miin = 0;
+				for(auto x : v){
 					string s = "";
 					for(int j = 1; j <= n; j++) s += x[a[j] - 1];
 					maax = max(maax, stoll(s));
@@ -20,9 +20,9 @@ void ql(int i){
 				}
 				cnt = min(cnt, abs(maax - miin));
 			}
-            else ql(i + 1);
-		    dd[j] = 0;
 		}
+		else ql(i + 1);
+		dd[j] = 0;
 	}
 }
 
